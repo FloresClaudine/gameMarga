@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Heroes Quiz</title>
+
+    <style>
+
+        body{
+            background-color: #e6d1ab;
+            font-family: Arial, Helvetica, sans-serif;
+            
+        }
+        .bayaniContainer {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+
+        }
+
+        .bayani {
+            position: relative;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            background-color: #4b371c;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            height: 1100px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            filter: drop-shadow(0 10px 10px #0009);
+            overflow: hidden; 
+            
+
+
+
+        }
+
+       
+        .dropzone-box {
+            position: absolute;
+            top: 65%; /* Adjusted top position to move it downward */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 50px;
+            border: 2px solid burlywood;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 110px; /* Adjusted margin to create space for the image */
+            border-radius: 30px;
+            
+        }
+
+        .draggable {
+            width: 100px;
+            height: 50px;
+            background-color: #3f301d;
+            margin: 5px;
+            padding: 20px;
+            cursor: move;
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+            border-radius: 24px;
+            color: white;
+            border: 2px solid #ffffff; 
+            filter: drop-shadow(0 10px 10px #0009);
+            transition: background-color 0.3s ease; /* Add a smooth transition for background color */
+}
+
+.draggable:hover {
+    background-color: #6a5130; /* Change background color on hover */
+}
+
+
+        
+
+        .draggableContainer {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin-top: 160px; /* Add this line to create space between header and draggable elements */
+
+        }
+
+        .dropped-element {
+            background-color: #9a7b4f;
+
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50px;
+            font-weight: bold;
+        }
+
+      
+
+        .significance {
+    font-size: 20px;
+    margin-top: 80px; /* Adjust this value to move it upward */
+    position: absolute;
+    top: 70%;
+    bottom: 0;
+    width: 90%;
+    text-align: center;
+    padding-left: 0%;
+    text-indent: 0%;
+    color: white;
+    text-shadow: #000;
+    line-height: 1.8; /* Adjust line height for better readability */
+    background-color: #795c32;
+    padding: 5px;
+    border-radius: 15px;
+    height: 45%;
+}
+
+.significance:hover {
+    margin-top: 70px; /* Adjust the margin on hover for a subtle effect */
+}
+/* Add this block to your existing styles */
+img {
+    object-fit: cover;
+    max-width: 90%;
+    max-height: none; /* Updated to allow the full height of the image */
+    display: block;
+    margin: 20px auto 30px; /* Adjusted margin-top to move the image downward */
+    margin-bottom: 30px;
+    height: auto;
+    border-bottom: 1px solid #e0e0e0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 90%;
+    filter: drop-shadow(0 10px 10px #0009);
+    transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.1);
+    outline: 4px solid #9a7b4f; 
+    filter: saturate(150%) contrast(120%); 
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+
+
+h1{
+
+              background-color: #231709;
+             color: white;
+            font-size: 36px; /* Font size */
+            font-family: 'Arial', sans-serif; /* Font family */
+            text-align: center; /* Text alignment */
+            margin: 20px 0; /* Margin (adjust as needed) */
+            text-transform: uppercase; /* Uppercase text */
+            font-weight: bold; /* Font weight */
+            letter-spacing: 2px; /* Letter spacing */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Text shadow */
+            padding: 25px;
+            border-radius: 10px;
+            position: relative;
+            width: 100%;
+             z-index: 1000; /* Set a z-index value to ensure it appears above other elements */
+             top: 0 ; /* Place the header at the top of the viewport */
+             font-size: 50px;
+             transition: transform 0.3s ease-in-out;
+
+             
+}
+h1:hover {
+    font-size: 60px; /* Increase font size on hover */
+}
+#dropzone-box-1{
+    top: 45%;
+}
+
+#dropzone-box-2{
+    top: 45%;
+
+}
+
+#dropzone-box-3{
+    top: 45%;
+
+}
+
+#dropzone-box-4{
+    top: 45%;
+
+}
+
+#dropzone-box-5{
+    top: 50%;
+
+}
+
+#dropzone-box-6{
+    top: 50%;
+
+}
+
+#dropzone-box-7{
+    top: 50%;
+
+}
+
+#dropzone-box-8{
+    top: 50%;
+
+}
+
+#dropzone-box-9{
+    top: 50%;
+
+}
+
+#dropzone-box-9{
+    top: 50%;
+
+}
+
+#dropzone-box-10{
+    top: 50%;
+
+}
+
+#dropzone-box-11{
+    top: 40%;
+
+}
+
+#dropzone-box-12{
+    top: 40%;
+
+}
+
+#dropzone-box-13{
+    top: 40%;
+
+}
+
+#dropzone-box-14{
+    top: 44%;
+
+}
+
+#dropzone-box-15{
+    top: 50%;
+
+}
+
+/*section id*/
+
+#section-1{
+    top: 45%;
+    line-height: 1.5em;
+    height: 46%;
+
+    
+}
+
+#section-2{
+    top: 45%;
+    line-height: 1.5em;
+    height: 46%;
+
+
+}
+
+#section-3{
+    top: 45%;
+    line-height: 1.5em;
+    font-size: 20px;
+    height: 46%;
+
+
+}
+
+#section-4{
+    top: 45%;
+    line-height: 1.5em;
+    height: 46%;
+
+
+}
+
+#section-5{
+    top: 50%;
+    line-height: 1.5em;
+    height: 41%;
+
+
+}
+
+#section-6{
+    top: 49%;
+    line-height: 1.5em;
+    height: 42%;
+
+
+}
+
+#section-7{
+    top: 50%;
+    line-height: 1.5em;
+    height: 41%;
+
+
+}
+
+#section-8{
+    top: 50%;
+    line-height: 1.5em;
+    height: 41%;
+
+    
+
+
+}
+
+#section-9{
+    top: 50%;
+    line-height: 1.5em;
+    height: 41%;
+
+
+}
+
+#section-10{
+    top: 50%;
+    line-height: 1.5em;
+    height: 41%;
+
+
+}
+
+#section-11{
+    top: 40%;
+    line-height: 1.5em;
+    height: 50%;
+
+
+}
+
+#section-12{
+    top: 40%;
+    line-height: 1.5em;
+    font-size: 21.5px;
+    height: 50%;
+
+
+}
+ 
+#section-13{
+    top: 40%;
+    line-height: 1.5em;
+    font-size: 22.5px;
+    height: 50%;
+
+
+}
+ 
+#section-14{
+    top: 43%;
+    line-height: 1.5em;
+    font-size: 22.5px;
+    height: 47%;
+
+
+
+}
+ 
+#section-15{
+    top: 50%;
+    line-height: 1.5em;
+    font-size: 22.5px;
+    height: 40%;
+
+
+
+}
+
+#score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            right: 70px;            
+            background-color: #795c32; /* Set the background color */
+    padding: 10px; /* Add padding for better visibility */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* Adjust the font size for smaller screens */
+            }
+
+            #score {
+                font-size: 16px; /* Adjust the font size for the score on smaller screens */
+            }
+
+
+        }
+
+        .fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 5px;
+    background-color: #231709;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+
+
+}
+
+.fixed-header:hover {
+    background-color: #2d2212; /* Change background color on hover */
+}
+
+.fixed-header a {
+    color: #ffffff; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 15px; /* Add spacing between links */
+}
+
+.fixed-header a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color:  #231709;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Added a subtle box shadow */
+    transition: background-color 0.3s ease; /* Add a smooth transition for background color */
+}
+
+footer:hover {
+    background-color: #3f301d; /* Change background color on hover */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <header class="fixed-header"><h1>Philippines' National Heroes Quiz <span id="score">Score: 15</span></h1></header>
+    <div class="draggableContainer">
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-1" style="width: 70%; height: 50px; ">Jose Rizal</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-2" style="width: 70%; height: 50px;">Andres Bonifacio</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-3" style="width: 70%; height: 50px;">Emilio Aguinaldo</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-4" style="width: 70%; height: 50px;">Apolinario Mabini</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-5" style="width: 70%; height: 50px;">Marcelo del Pilar</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-6" style="width: 70%; height: 50px;">Melchora Aquino</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-7" style="width: 70%; height: 50px;">Gregorio del Pilar</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-8" style="width: 70%; height: 50px;">Lapu-Lapu</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-9" style="width: 70%; height: 50px;">Juan Luna</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-10" style="width: 70%; height: 50px;">Graciano Lopez Jaena</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-11" style="width: 70%; height: 50px;">Diego Silang</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-12" style="width: 70%; height: 50px;">Marcela Agoncillo</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-13" style="width: 70%; height: 50px;">Lorenzo Ruiz</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-14" style="width: 70%; height: 50px;">Emilio Jacinto</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="draggable-15" style="width: 70%; height: 50px;">Gabriela Silang</div>
+    </div>
+
+    <div class="bayaniContainer">
+        <div class="bayani" id="bayani-1">
+            <img src="game_images/1.jpg" alt="">
+            <div class="dropzone-box" id="dropzone-box-1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id="section-1">
+              She is also  known as "Tandang Sora," played a crucial role in the Philippine Revolution against Spanish rule. Her short contribution involves providing shelter, food, and nursing care to Filipino revolutionaries, earning her the title "Mother of Balintawak."  enduring personal sacrifices such as the confiscation of her property and exile, and becoming a symbol of Filipino courage and patriotism. Tandang Sora's legacy is celebrated in the Philippines, with various landmarks named in her honor.
+            </section>
+        </div>
+
+        
+        <div class="bayani" id="bayani-2">
+            <img src="game_images/2.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id = "section-2">
+               He contributed to Philippine independence through literary works exposing colonial abuses, advocating peaceful reform, founding La Liga Filipina for civic unity, enduring exile and martyrdom, and inspiring later revolutionaries, ultimately contributing to the Philippine Revolution and independence in 1898.      Through his writings, such as "Noli Me Tangere" and "El Filibusterismo," he exposed injustices under Spanish colonial rule, inspiring a sense of nationalism.        </section>
+        </div>
+        
+        <div class="bayani" id="bayani-3">
+            <img src="game_images/3.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id = "section-3">
+                He was a key figure in Philippine history, leading the Ilocos Revolt against Spanish colonial rule during the late 18th century. Born in 1730, he seized the opportunity during the British occupation of Manila in 1762 to rebel against the Spanish, forming an independent government in Vigan. Despite facing challenges and betrayal, his contributions to the fight for Philippine independence remain significant. His legacy symbolizes courage, resistance, and patriotism in the country's history.        </div>
+        <div class="bayani" id="bayani-4">
+            <img src="game_images/4.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id = "section-4">
+            She is  born June 24, 1879, played a key role in creating the first Philippine flag commissioned by President Emilio Aguinaldo in Hong Kong. Alongside Lorenza Agoncillo and Delfina Herbosa de Natividad, she designed the "Katipunan flag," unveiled on May 28, 1898, symbolizing the nation's quest for independence with a sun, eight rays, and a triangle representing Luzon, Visayas, and Mindanao. The flag remains a lasting symbol of Filipino identity and nationalism.      </div>
+        <div class="bayani" id="bayani-5">
+            <img src="game_images/5.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id="section-5">
+             He is born on November 30, 1863, was a pivotal figure in the Philippine Revolution against Spanish rule. He founded the Katipunan in 1892, leading it in battles against Spanish forces and inspiring Filipinos to join the cause. The Cry of Pugad Lawin in 1896 marked the start of open rebellion.   He  convened the Tejeros Convention in 1897, but internal conflicts led to his arrest and execution.      </div>
+        <div class="bayani" id="bayani-6">
+            <img src="game_images/6.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id="section-6">
+              He is born on November 14, 1875, was a Filipino military leader during the Philippine Revolution and the Philippine-American War. He joined the Katipunan and served as a general in the revolutionary forces. He is best known for his heroic defense of Tirad Pass in 1899, where he sacrificed his life to allow Emilio Aguinaldo to escape. His bravery earned him the title "Hero of Tirad Pass" and made him a symbol of Filipino patriotism and resistance.</section>        </div>
+        <div class="bayani" id="bayani-7">
+            <img src="game_images/cebu.png" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"id="section-7">
+                He is called the Datu of Mactan, is celebrated for leading the resistance against Spanish colonization in the Battle of Mactan in 1521. His victory, which resulted in the death of Ferdinand Magellan, symbolizes early Filipino heroism and resistance against foreign oppression. He is  recognized as the first Filipino hero, and a monument, the Lapu-Lapu Shrine, honors his role in Philippine history.
+        </div>
+        <div class="bayani" id="bayani-8">
+            <img src="game_images/emilio.png" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id="section-8">
+                He is born on March 22, 1869, was a key leader in the Philippine Revolution. He declared Philippine independence on June 12, 1898, marking the establishment of the First Philippine Republic. He ed Filipino forces in the Philippine-American War and served as the first President of the Philippines from 1899 to 1901. Despite periods of exile and imprisonment, he continued advocating for Philippine independence, leaving a lasting impact on the country's history. </section>        </div>
+        <div class="bayani" id="bayani-9">
+            <img src="game_images/ruiz.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id="section-9">
+                He is born in 1600, is recognized as the first Filipino saint and martyr. His significant contribution lies in his steadfast refusal to renounce his Christian faith during religious persecution in Japan in 1636. Enduring torture and choosing martyrdom over abandoning his beliefs, he became a symbol of unwavering faith. Canonized in 1987, he stands as an inspirational figure, embodying courage and commitment to Christian principles.
+            </div>
+        <div class="bayani" id="bayani-10">
+            <img src="game_images/10.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+         
+            <section class = "significance"  id="section-10">
+              He  was a renowned Filipino painter celebrated for his masterpiece "Spoliarium," which won international acclaim in 1884. Alongside Félix Resurrección Hidalgo, he levated Filipino art on the global stage, challenging stereotypes. In addition to his artistic prowess, he is also a nationalist and diplomat, contributing to the Propaganda Movement for political reforms. His legacy endures as a symbol of Philippine artistic excellence and national pride. </section>
+            </div>
+        <div class="bayani" id="bayani-11">
+            <img src="game_images/11.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id="section-11">
+                He is known as the "Brains of the Katipunan," was a key intellectual force in the Philippine Revolution. As political adviser and Prime Minister to Emilio Aguinaldo, he provided crucial insights for the First Philippine Republic.  He authored "The True Decalogue," a guide to ethical governance, and advocated for Philippine independence, contributing to diplomatic efforts and social justice reforms. Despite physical challenges, his intellectual and leadership contributions left a lasting impact on the struggle for independence.</section>
+            </div>
+        <div class="bayani" id="bayani-12">
+            <img src="game_images/12.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id="section-12">
+              He  was a prominent Filipino revolutionary known as the "Brains of the Katipunan." He played a key role in shaping the ideology of the revolutionary society, contributing significantly to the Kartilya ng Katipunan. He is also admired for his military leadership, was both the "Brains and Sword of the Katipunan." His advocacy for social justice and unwavering nationalism made him a symbol of the revolutionary spirit during the fight for Philippine independence.        </div>
+        <div class="bayani" id="bayani-13">
+            <img src="game_images/13.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id="section-13">
+              She  is a brave Filipina leader who played a key role in the Philippine resistance against Spanish colonization. After the assassination of her husband, she took charge of the Ilocano uprising in 1763. She continued the fight for independence, leading troops and displaying exceptional leadership. Her significant contribution lies in her courage and dedication to the cause of Filipino freedom during a challenging period in history.            </section>
+        </div>
+        <div class="bayani" id="bayani-14"  >
+            <img src="game_images/14.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance"  id="section-14">
+               He was an important writer in the Philippines in the late 1800s. He used his writing skills to speak out against the mistreatment of the Spanish rulers. By editing and writing for publications like "La Solidaridad," he helped Filipinos become more aware of their rights and encouraged them to resist Spanish oppression. His works played a big role in preparing the way for the Philippines to eventually gain independence           </section>
+        </div>
+        <div class="bayani" id="bayani-15">
+            <img src="game_images/15.jpg" alt="">
+
+            <div class="dropzone-box" id="dropzone-box-15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <section class = "significance" id="section-15">
+                He is a brave writer who spoke out against the Spanish rulers. He wrote in a newspaper called "La Solidaridad" to tell people about the need for change and to unite against the unfair treatment. His work helped Filipinos realize their identity and stand up against the colonial rulers. He was one of the writers of "La Solidaridad" with other Filipino Reformists            </section>
+        </div>
+    </div>
+<footer>&copy; Claudine Margareth Flores G-12 Cooper</footer>
+    <script>
+        // Your existing script content
+        var scrollSpeed = 5;
+        var score = 15;
+    
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+    
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+            window.addEventListener('dragover', handleDragOver);
+        }
+    
+        function drop(event) {
+            event.preventDefault();
+            window.removeEventListener('dragover', handleDragOver);
+    
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            var dropzone = event.target.closest('.bayani');
+            var dropzoneBox = dropzone.querySelector('.dropzone-box');
+    
+            if (dropzoneBox.querySelector('.dropped-element')) {
+                alert("Dropzone already contains an element!");
+            } else {
+                var dropzoneStyle = getComputedStyle(dropzoneBox);
+    
+                var newElement = document.createElement('div');
+                newElement.innerHTML = draggedElement.innerHTML;
+    
+                newElement.style.width = dropzoneStyle.width;
+                newElement.style.height = dropzoneStyle.height;
+                newElement.style.borderRadius = dropzoneStyle.borderRadius;
+                newElement.style.padding = dropzoneStyle.padding;
+                newElement.style.margin = dropzoneStyle.margin;
+    
+                newElement.classList.add('dropped-element');
+    
+                // Set the font size to 24px for all dropped elements
+                newElement.style.fontSize = "24px";
+    
+                dropzoneBox.innerHTML = '';
+                dropzoneBox.appendChild(newElement);
+    
+                draggedElement.remove();
+
+                
+    
+                // Check if the dropped element is "Andres Bonifacio" and is in the correct dropzone
+
+               if (data === "draggable-2" && dropzone.id !== "bayani-5") {
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                   
+                    
+
+                }else if(data == "draggable-1" && dropzone.id !== "bayani-2"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+                    
+
+
+
+                }else if(data == "draggable-3" && dropzone.id !== "bayani-8"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+
+                }else if(data == "draggable-4" && dropzone.id !== "bayani-11"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+
+                }else if(data == "draggable-5" && dropzone.id !== "bayani-14"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                 } else if(data == "draggable-6" && dropzone.id !== "bayani-1"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                } else if(data == "draggable-7" && dropzone.id !== "bayani-6"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                }else if(data == "draggable-8" && dropzone.id !== "bayani-7"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+                }
+
+                else if(data == "draggable-9" && dropzone.id !== "bayani-10"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                }else if(data == "draggable-10" && dropzone.id !== "bayani-15"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                }else if(data == "draggable-11" && dropzone.id !== "bayani-3"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+
+                }else if(data == "draggable-12" && dropzone.id !== "bayani-4"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                } else if(data == "draggable-13" && dropzone.id !== "bayani-9"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+                }else if(data == "draggable-14" && dropzone.id !== "bayani-12"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone);
+
+
+
+                }else if(data == "draggable-15" && dropzone.id !== "bayani-13"){
+                    score -= 1;
+                    applyIncorrectPlacementStyle(dropzone );
+
+                }
+
+                else{
+                    applyCorrectPlacementStyle(dropzone);
+                    
+                }
+
+                document.getElementById('score').innerText = "Score: " + score;
+
+                
+            }
+        }
+        function applyIncorrectPlacementStyle(dropzone) {
+    dropzone.style.boxShadow = "0 0 20px #ff8e8e"; // Red shadow for incorrect placement
+   
+}
+
+function applyCorrectPlacementStyle(dropzone) {
+    dropzone.style.boxShadow = "0 0 20px #00ff00"; // Green shadow for correct placement
+}
+    
+        function handleDragOver(event) {
+            var mouseY = event.clientY;
+            var scrollSpeed = 10;
+    
+            if (mouseY < 100) {
+                window.scrollBy(0, -scrollSpeed);
+            } else if (mouseY > window.innerHeight - 100) {
+                window.scrollBy(0, scrollSpeed);
+            }
+        }
+
+        
+        
+    </script>
+    
+    
+    
+</body>
+
+</html>
